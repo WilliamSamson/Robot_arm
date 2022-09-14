@@ -69,6 +69,8 @@ class _ChatPageState extends State<ChatPage>
     });
   }
 
+  int speed = 10;
+
   Widget build(BuildContext context) {
     String denemee = "No Data";
 
@@ -134,6 +136,10 @@ class _ChatPageState extends State<ChatPage>
                 sendMessageJ: () => _sendMessage('J'),
                 sendMessageK: () => _sendMessage('K'),
                 sendMessageL: () => _sendMessage('L'),
+                sendMessageM: () => _sendMessage('M'),
+                sendMessageN: () => _sendMessage('N'),
+                sendMessageO: () => _sendMessage('O'),
+                sendMessageP: () => _sendMessage('P'),
               ),
             ),
             const Divider(
@@ -148,9 +154,9 @@ class _ChatPageState extends State<ChatPage>
               builder: (context, AsyncSnapshot<String> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 80, vertical: 40),
+                    padding: EdgeInsets.symmetric(horizontal: 80, vertical: 20),
                     child: CircularProgressIndicator(
-                      color: Color.fromARGB(255, 10, 14, 94),
+                      color: Colors.white,
                     ),
                   );
                 }

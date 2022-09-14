@@ -17,6 +17,10 @@ class ServoPage extends StatefulWidget {
     required this.sendMessageJ,
     required this.sendMessageK,
     required this.sendMessageL,
+    required this.sendMessageM,
+    required this.sendMessageN,
+    required this.sendMessageO,
+    required this.sendMessageP,
   }) : super(key: key);
   final Function sendMessageA;
   final Function sendMessageB;
@@ -30,12 +34,18 @@ class ServoPage extends StatefulWidget {
   final Function sendMessageJ;
   final Function sendMessageK;
   final Function sendMessageL;
+  final Function sendMessageM;
+  final Function sendMessageN;
+  final Function sendMessageO;
+  final Function sendMessageP;
 
   @override
   _ServoPageState createState() => _ServoPageState();
 }
 
 class _ServoPageState extends State<ServoPage> {
+  int speed = 10;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -49,7 +59,7 @@ class _ServoPageState extends State<ServoPage> {
               shape: BeveledRectangleBorder(
                   borderRadius: BorderRadius.circular(12)),
               elevation: 50,
-              shadowColor: Colors.black,
+              shadowColor: Color.fromARGB(255, 177, 173, 220),
               color: Color.fromARGB(124, 7, 7, 7),
               child: Column(
                 children: [
@@ -137,7 +147,7 @@ class _ServoPageState extends State<ServoPage> {
           ],
         ),
         const SizedBox(
-          height: 20,
+          height: 15,
         ),
         /////////////////////////////////
         Row(
@@ -212,7 +222,7 @@ class _ServoPageState extends State<ServoPage> {
                           widget.sendMessageG();
                         },
                         icon: const Icon(
-                          FontAwesomeIcons.repeat,
+                          FontAwesomeIcons.redo,
                           color: Colors.white,
                         ),
                       ),
@@ -236,7 +246,7 @@ class _ServoPageState extends State<ServoPage> {
           ],
         ),
         const SizedBox(
-          height: 20,
+          height: 15,
         ),
         //////////////
         Row(
@@ -331,6 +341,60 @@ class _ServoPageState extends State<ServoPage> {
                     ],
                   )
                 ],
+              ),
+            ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Slider(
+              value: speed.toDouble(),
+              onChanged: (value) {
+                if (speed == 10) {
+                  setState(
+                    () {
+                      widget.sendMessageM();
+                    },
+                  );
+                } else if (speed == 20) {
+                  setState(
+                    () {
+                      widget.sendMessageN();
+                    },
+                  );
+                } else if (speed == 30) {
+                  setState(
+                    () {
+                      widget.sendMessageO();
+                    },
+                  );
+                } else if (speed == 40) {
+                  setState(
+                    () {
+                      widget.sendMessageP();
+                    },
+                  );
+                }
+                setState(
+                  () {
+                    speed = value.toInt();
+                  },
+                );
+              },
+              min: 0,
+              max: 40,
+              divisions: 4,
+            ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Speed: $speed",
+              style: const TextStyle(
+                fontSize: 15,
               ),
             ),
           ],
