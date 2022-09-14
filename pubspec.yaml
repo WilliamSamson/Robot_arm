@@ -37,8 +37,9 @@ dependencies:
   flutter_blue: ^0.8.0
   flutter_bluetooth_serial: ^0.4.0
   animated_stack: ^0.2.0
+  font_awesome_flutter: ^10.2.1
+  google_fonts: ^3.0.1
  
-
 flutter_icons:
   android: "launcher_icon"
   ios: true

@@ -2,14 +2,11 @@ library send_messagee;
 
 import 'dart:async';
 import 'dart:convert';
-
 import 'dart:typed_data';
-import 'package:animated_stack/animated_stack.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
-
-import 'buzzer_page.dart';
+import 'Servo.dart';
 
 class ChatPage extends StatefulWidget {
   final BluetoothDevice? server;
@@ -77,49 +74,97 @@ class _ChatPageState extends State<ChatPage>
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Robo Arm'),
-      ),
-      body: Column(
-        children: [
-          // Padding(
-          //     padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 5),
-          // child:
-          //  buzzerPage(
-          //   sendMessage1: () => _sendMessage('F'),
-          //   sendMessage2: () => _sendMessage('B'),
-          //   sendMessage3: () => _sendMessage('3'),
-          //   sendMessage4: () => _sendMessage('4'),
-          //   sendMessage5: () => _sendMessage('5'),
-          //   sendMessage6: () => _sendMessage('6'),
-          //   sendMessage7: () => _sendMessage('7'),
-          //   sendMessage8: () => _sendMessage('8'),
-          //   sendMessage9: () => _sendMessage('9'),
-          // )),
-          Align(
-            alignment: Alignment.center,
-            child: ledPage(
-              sendMessageA: () => _sendMessage('F'),
-              sendMessageK: () => _sendMessage('B'),
-            ),
+        backgroundColor: Color.fromARGB(255, 22, 40, 113),
+        elevation: 20,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(10),
           ),
-          StreamBuilder<String>(
-            stream: mineController.stream.asBroadcastStream(),
-            builder: (context, AsyncSnapshot<String> snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 100, vertical: 150),
-                  child: CircularProgressIndicator(),
+        ),
+        centerTitle: true,
+        title: const Text(
+          'Robo Arm Control',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            image: AssetImage('assets/arm-3.png'),
+          ),
+        ),
+        child: Column(
+          children: [
+            const Padding(
+              padding: EdgeInsets.only(
+                left: 16.0,
+              ),
+            ),
+            const SizedBox(
+              height: 25,
+              width: 100,
+            ),
+            const Divider(
+              color: Colors.white,
+              indent: 30,
+              endIndent: 30,
+              thickness: 3,
+              height: 30,
+            ),
+            const SizedBox(
+              height: 5,
+              width: 25,
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: ServoPage(
+                sendMessageA: () => _sendMessage('A'), //open
+                sendMessageB: () => _sendMessage('B'), //close
+                sendMessageC: () => _sendMessage('C'), //up
+                sendMessageD: () => _sendMessage('D'), //down
+                sendMessageE: () => _sendMessage('E'),
+                sendMessageF: () => _sendMessage('F'),
+                sendMessageG: () => _sendMessage('G'),
+                sendMessageH: () => _sendMessage('H'),
+                sendMessageI: () => _sendMessage('I'),
+                sendMessageJ: () => _sendMessage('J'),
+                sendMessageK: () => _sendMessage('K'),
+                sendMessageL: () => _sendMessage('L'),
+              ),
+            ),
+            const Divider(
+              color: Colors.white,
+              indent: 30,
+              endIndent: 30,
+              thickness: 3,
+              height: 30,
+            ),
+            StreamBuilder<String>(
+              stream: mineController.stream.asBroadcastStream(),
+              builder: (context, AsyncSnapshot<String> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 80, vertical: 40),
+                    child: CircularProgressIndicator(
+                      color: Color.fromARGB(255, 10, 14, 94),
+                    ),
+                  );
+                }
+                return Center(
+                  child: Text(
+                    snapshot.data ?? denemee,
+                    style: const TextStyle(
+                        fontSize: 30, color: Color.fromARGB(255, 14, 9, 86)),
+                  ),
                 );
-              }
-              return Center(
-                child: Text(
-                  snapshot.data ?? denemee,
-                  style: const TextStyle(fontSize: 30, color: Colors.black),
-                ),
-              );
-            },
-          )
-        ],
+              },
+            )
+          ],
+        ),
       ),
     );
   }
@@ -133,7 +178,7 @@ class _ChatPageState extends State<ChatPage>
   _sendMessage(String text) async {
     text = text.trim();
 
-    if (text.length > 0) {
+    if (text.isNotEmpty) {
       try {
         connection!.output.add(Uint8List.fromList(utf8.encode(text)));
         await connection!.output.allSent;
@@ -145,11 +190,13 @@ class _ChatPageState extends State<ChatPage>
   }
 
   _receiveMessage() {
-    connection!.input!.listen((Uint8List data) {
-      print('Data incoming: ${ascii.decode(data)}');
-      void deneme = ascii.decode(data);
+    connection!.input!.listen(
+      (Uint8List data) {
+        print('Data incoming: ${ascii.decode(data)}');
+        void deneme = ascii.decode(data);
 
-      return deneme;
-    });
+        return deneme;
+      },
+    );
   }
 }

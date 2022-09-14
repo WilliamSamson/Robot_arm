@@ -9,8 +9,8 @@ class SelectBondedDevicePage extends StatefulWidget {
   final bool? checkAvailability;
   final Function? onCahtPage;
 
-  SelectBondedDevicePage(
-      {this.checkAvailability = true, required this.onCahtPage});
+  const SelectBondedDevicePage(
+      {super.key, this.checkAvailability = true, required this.onCahtPage});
 
   @override
   _SelectBondedDevicePageState createState() => _SelectBondedDevicePageState();

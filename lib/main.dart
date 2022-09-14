@@ -11,10 +11,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Bluetooth Buzzer',
+      title: 'Bluetooth Control',
       theme: ThemeData(
-          colorScheme: ColorScheme.dark(
-              secondary: Color(666666), primary: Color(0xFF075E54))),
+        colorScheme: const ColorScheme.dark(
+          secondary: Color.fromARGB(255, 10, 4, 49),
+          primary: Color.fromARGB(255, 11, 7, 94),
+        ),
+      ),
       home: FutureBuilder(
         future: FlutterBluetoothSerial.instance.requestEnable(),
         builder: (BuildContext context, future) {
@@ -22,11 +25,11 @@ class MyApp extends StatelessWidget {
             return Scaffold(
               body: Container(
                 height: double.infinity,
-                child: Center(
+                child: const Center(
                   child: Icon(
                     Icons.bluetooth_disabled,
                     size: 200,
-                    color: Colors.black,
+                    color: Color.fromARGB(255, 0, 0, 0),
                   ),
                 ),
               ),
@@ -40,30 +43,52 @@ class MyApp extends StatelessWidget {
   }
 }
 
-//////////////
-
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-      appBar: AppBar(
-        title: const Text("connectable devices"),
-      ),
-      body: SelectBondedDevicePage(
-        onCahtPage: (device1) {
-          BluetoothDevice device = device1;
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return ChatPage(
-              server: device,
-            );
-          },
+      child: Scaffold(
+        appBar: AppBar(
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(6.5),
+            ),
           ),
-          );
-        },
+          backgroundColor: Color.fromARGB(255, 10, 21, 77),
+          title: const Text(
+            "Connectable devices",
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+          centerTitle: true,
+        ),
+        body: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: AssetImage('assets/sicon.jpg'),
+            ),
+          ),
+          child: SelectBondedDevicePage(
+            onCahtPage: (device1) {
+              BluetoothDevice device = device1;
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return ChatPage(
+                      server: device,
+                    );
+                  },
+                ),
+              );
+            },
+          ),
+        ),
       ),
-    ));
+    );
   }
 }
