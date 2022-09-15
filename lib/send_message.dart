@@ -103,7 +103,7 @@ class _ChatPageState extends State<ChatPage>
           children: [
             const Padding(
               padding: EdgeInsets.only(
-                left: 16.0,
+                left: 10.0,
               ),
             ),
             const SizedBox(
@@ -130,16 +130,24 @@ class _ChatPageState extends State<ChatPage>
                 sendMessageD: () => _sendMessage('D'), //down
                 sendMessageE: () => _sendMessage('E'),
                 sendMessageF: () => _sendMessage('F'),
-                sendMessageG: () => _sendMessage('G'),
-                sendMessageH: () => _sendMessage('H'),
-                sendMessageI: () => _sendMessage('I'),
-                sendMessageJ: () => _sendMessage('J'),
-                sendMessageK: () => _sendMessage('K'),
-                sendMessageL: () => _sendMessage('L'),
                 sendMessageM: () => _sendMessage('M'),
                 sendMessageN: () => _sendMessage('N'),
                 sendMessageO: () => _sendMessage('O'),
                 sendMessageP: () => _sendMessage('P'),
+                /////////////
+                sendMessageA1: () => _sendMessage('A1'), //open
+                sendMessageB1: () => _sendMessage('B1'), //close
+                sendMessageC1: () => _sendMessage('C1'), //up
+                sendMessageD1: () => _sendMessage('D1'), //down
+                sendMessageE1: () => _sendMessage('E1'),
+                sendMessageF1: () => _sendMessage('F1'),
+
+                sendMessageA2: () => _sendMessage('A2'), //open
+                sendMessageB2: () => _sendMessage('B2'), //close
+                sendMessageC2: () => _sendMessage('C2'), //up
+                sendMessageD2: () => _sendMessage('D2'), //down
+                sendMessageE2: () => _sendMessage('E2'),
+                sendMessageF2: () => _sendMessage('F2'),
               ),
             ),
             const Divider(
