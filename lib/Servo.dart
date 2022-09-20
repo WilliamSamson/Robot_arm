@@ -21,6 +21,12 @@ class ServoPage extends StatefulWidget {
     required this.sendMessageN,
     required this.sendMessageO,
     required this.sendMessageP,
+    required this.sendMessage1,
+    required this.sendMessage2,
+    required this.sendMessage3,
+    required this.sendMessage4,
+    required this.sendMessage5,
+    required this.sendMessage6,
   }) : super(key: key);
   final Function sendMessageA;
   final Function sendMessageB;
@@ -38,13 +44,19 @@ class ServoPage extends StatefulWidget {
   final Function sendMessageN;
   final Function sendMessageO;
   final Function sendMessageP;
+  final Function sendMessage1;
+  final Function sendMessage2;
+  final Function sendMessage3;
+  final Function sendMessage4;
+  final Function sendMessage5;
+  final Function sendMessage6;
 
   @override
   _ServoPageState createState() => _ServoPageState();
 }
 
 class _ServoPageState extends State<ServoPage> {
-  int speed = 10;
+  int speed = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -53,11 +65,11 @@ class _ServoPageState extends State<ServoPage> {
         Row(
           children: [
             const SizedBox(
-              width: 20,
+              width: 5,
             ),
             Card(
               shape: BeveledRectangleBorder(
-                  borderRadius: BorderRadius.circular(12)),
+                  borderRadius: BorderRadius.circular(10)),
               elevation: 50,
               shadowColor: Color.fromARGB(255, 177, 173, 220),
               color: Color.fromARGB(124, 7, 7, 7),
@@ -82,7 +94,19 @@ class _ServoPageState extends State<ServoPage> {
                         ),
                       ),
                       const SizedBox(
-                        width: 8,
+                        width: 1,
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          widget.sendMessage1();
+                        },
+                        icon: const Icon(
+                          FontAwesomeIcons.add,
+                          color: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 1,
                       ),
                       IconButton(
                         onPressed: () {
@@ -98,10 +122,10 @@ class _ServoPageState extends State<ServoPage> {
                 ],
               ),
             ),
-            SizedBox(width: 50),
+            SizedBox(width: 7),
             Card(
               shape: BeveledRectangleBorder(
-                  borderRadius: BorderRadius.circular(12)),
+                  borderRadius: BorderRadius.circular(10)),
               elevation: 50,
               shadowColor: Colors.black,
               color: Color.fromARGB(124, 7, 7, 7),
@@ -126,9 +150,20 @@ class _ServoPageState extends State<ServoPage> {
                           color: Colors.white,
                         ),
                       ),
-
                       const SizedBox(
-                        width: 8,
+                        width: 1,
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          widget.sendMessage2();
+                        },
+                        icon: const Icon(
+                          FontAwesomeIcons.add,
+                          color: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 1,
                       ),
                       IconButton(
                         onPressed: () {
@@ -153,11 +188,11 @@ class _ServoPageState extends State<ServoPage> {
         Row(
           children: [
             const SizedBox(
-              width: 20,
+              width: 5,
             ),
             Card(
               shape: BeveledRectangleBorder(
-                  borderRadius: BorderRadius.circular(12)),
+                  borderRadius: BorderRadius.circular(10)),
               elevation: 50,
               shadowColor: Colors.black,
               color: Color.fromARGB(124, 7, 7, 7),
@@ -182,7 +217,19 @@ class _ServoPageState extends State<ServoPage> {
                         ),
                       ),
                       const SizedBox(
-                        width: 8,
+                        width: 1,
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          widget.sendMessage3();
+                        },
+                        icon: const Icon(
+                          FontAwesomeIcons.add,
+                          color: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 1,
                       ),
                       IconButton(
                         onPressed: () {
@@ -198,10 +245,10 @@ class _ServoPageState extends State<ServoPage> {
                 ],
               ),
             ),
-            SizedBox(width: 50),
+            SizedBox(width: 7),
             Card(
               shape: BeveledRectangleBorder(
-                  borderRadius: BorderRadius.circular(12)),
+                  borderRadius: BorderRadius.circular(10)),
               elevation: 50,
               shadowColor: Colors.black,
               color: Color.fromARGB(124, 7, 7, 7),
@@ -227,7 +274,19 @@ class _ServoPageState extends State<ServoPage> {
                         ),
                       ),
                       const SizedBox(
-                        width: 8,
+                        width: 1,
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          widget.sendMessage4();
+                        },
+                        icon: const Icon(
+                          FontAwesomeIcons.add,
+                          color: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 1,
                       ),
                       IconButton(
                         onPressed: () {
@@ -252,7 +311,7 @@ class _ServoPageState extends State<ServoPage> {
         Row(
           children: [
             const SizedBox(
-              width: 20,
+              width: 5,
             ),
             Card(
               shape: BeveledRectangleBorder(
@@ -281,7 +340,19 @@ class _ServoPageState extends State<ServoPage> {
                         ),
                       ),
                       const SizedBox(
-                        width: 8,
+                        width: 1,
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          widget.sendMessage5();
+                        },
+                        icon: const Icon(
+                          FontAwesomeIcons.add,
+                          color: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 1,
                       ),
                       IconButton(
                         onPressed: () {
@@ -297,10 +368,10 @@ class _ServoPageState extends State<ServoPage> {
                 ],
               ),
             ),
-            SizedBox(width: 50),
+            SizedBox(width: 7),
             Card(
               shape: BeveledRectangleBorder(
-                  borderRadius: BorderRadius.circular(12)),
+                  borderRadius: BorderRadius.circular(10)),
               elevation: 50,
               shadowColor: Colors.black,
               color: Color.fromARGB(124, 7, 7, 7),
@@ -325,9 +396,20 @@ class _ServoPageState extends State<ServoPage> {
                           color: Colors.white,
                         ),
                       ),
-
                       const SizedBox(
-                        width: 8,
+                        width: 1,
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          widget.sendMessage6();
+                        },
+                        icon: const Icon(
+                          FontAwesomeIcons.add,
+                          color: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 1,
                       ),
                       IconButton(
                         onPressed: () {

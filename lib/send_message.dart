@@ -103,7 +103,7 @@ class _ChatPageState extends State<ChatPage>
           children: [
             const Padding(
               padding: EdgeInsets.only(
-                left: 16.0,
+                left: 20.0,
               ),
             ),
             const SizedBox(
@@ -140,6 +140,12 @@ class _ChatPageState extends State<ChatPage>
                 sendMessageN: () => _sendMessage('N'),
                 sendMessageO: () => _sendMessage('O'),
                 sendMessageP: () => _sendMessage('P'),
+                sendMessage1: () => _sendMessage('1'), //open
+                sendMessage2: () => _sendMessage('2'), //close
+                sendMessage3: () => _sendMessage('3'), //up
+                sendMessage4: () => _sendMessage('4'), //down
+                sendMessage5: () => _sendMessage('5'),
+                sendMessage6: () => _sendMessage('6'),
               ),
             ),
             const Divider(
